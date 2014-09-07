@@ -2,18 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="nguest">
+	<resultMap type="com.nhnent.nguest.vo.GuestbookVO" id="guestbookMap">
+        <result property="email" column="email" />
+        <result property="passwd" column="passwd" />
+        <result property="text" column="text" />
+        <result property="regdate" column="reg_date" />
+        <result property="update" column="up_date" />
+	</resultMap>
+
+	<select id="selectList" resultMap="guestbookMap">
+		SELECT id, text, reg_date, up_date 
+		FROM guestbook 
+		ORDER BY up_date DESC
+	</select>
+
 	<insert id="insert" parameterType="com.nhnent.nguest.vo.GuestbookVO">
-		INSERT guestbook VALUES(#{id},#{passwd},#{text},SYSDATETIME,SYSDATETIME);
+		INSERT guestbook VALUES(#{email},#{passwd},#{text},SYSDATETIME,SYSDATETIME);
 	</insert>
 	
 	<update id="update" parameterType="com.nhnent.nguest.vo.GuestbookVO">
 		UPDATE guestbook 
-		SET text = #{text}, regdate = SYSDATETIME 
-		WHERE id = #{id} AND passwd = #{passwd}
+		SET text = #{text}, reg_date = SYSDATETIME 
+		WHERE email = #{email} AND passwd = #{passwd}
 	</update>
 	
 	<delete id="delete" parameterType="com.nhnent.nguest.vo.GuestbookVO">
 		DELETE FROM guestbook
-		WHERE id = #{id} AND passwd = #{passwd}
+		WHERE email = #{email} AND passwd = #{passwd}
 	</delete>
 </mapper>

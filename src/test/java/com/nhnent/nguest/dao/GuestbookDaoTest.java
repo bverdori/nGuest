@@ -33,7 +33,7 @@ public class GuestbookDaoTest {
 	public void 방명록_입력_테스트() {
 		GuestbookVO guestbookVo = new GuestbookVO();
 
-		guestbookVo.setId("test");
+		guestbookVo.setEmail("test");
 		guestbookVo.setPasswd("test");
 		guestbookVo.setText("Testing");
 		
