@@ -10,7 +10,7 @@ import com.nhnent.nguest.service.GuestbookService;
 import com.nhnent.nguest.vo.GuestbookVO;
 
 @Controller
-public class GuestbookController {
+public class HomeController {
 	@Autowired
 	GuestbookService guestbookService;
 
