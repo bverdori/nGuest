@@ -2,6 +2,8 @@ package com.nhnent.nguest.dao;
 
 import javax.annotation.Resource;
 
+import junit.framework.Assert;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -37,6 +39,10 @@ public class GuestbookDaoTest {
 		guestbookVo.setPasswd("test");
 		guestbookVo.setText("Testing");
 		
-		guestbookDao.insert(guestbookVo);
+		Assert.assertEquals(1, guestbookDao.insert(guestbookVo));
+		
+		guestbookVo.setText("test!!");
+		Assert.assertEquals(1, guestbookDao.update(guestbookVo));
+		Assert.assertEquals(1, guestbookDao.delete(guestbookVo));
 	}
 }

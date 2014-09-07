@@ -11,7 +11,7 @@
 	</resultMap>
 
 	<select id="selectList" resultMap="guestbookMap">
-		SELECT id, text, reg_date, up_date 
+		SELECT id, text, reg_date, up_date
 		FROM guestbook 
 		ORDER BY up_date DESC
 	</select>
@@ -22,7 +22,7 @@
 	
 	<update id="update" parameterType="com.nhnent.nguest.vo.GuestbookVO">
 		UPDATE guestbook 
-		SET text = #{text}, reg_date = NOW() 
+		SET text = #{text}, up_date = NOW() 
 		WHERE email = #{email} AND passwd = #{passwd}
 	</update>
 	
