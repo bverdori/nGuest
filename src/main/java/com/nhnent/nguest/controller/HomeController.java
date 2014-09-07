@@ -1,4 +1,4 @@
-package com.nhnent.nguest;
+package com.nhnent.nguest.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
