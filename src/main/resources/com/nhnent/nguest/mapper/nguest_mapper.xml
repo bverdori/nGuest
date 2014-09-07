@@ -17,12 +17,12 @@
 	</select>
 
 	<insert id="insert" parameterType="com.nhnent.nguest.vo.GuestbookVO">
-		INSERT guestbook VALUES(#{email},#{passwd},#{text},SYSDATETIME,SYSDATETIME);
+		INSERT guestbook VALUES(#{email},#{passwd},#{text},NOW(),NOW());
 	</insert>
 	
 	<update id="update" parameterType="com.nhnent.nguest.vo.GuestbookVO">
 		UPDATE guestbook 
-		SET text = #{text}, reg_date = SYSDATETIME 
+		SET text = #{text}, reg_date = NOW() 
 		WHERE email = #{email} AND passwd = #{passwd}
 	</update>
 	
