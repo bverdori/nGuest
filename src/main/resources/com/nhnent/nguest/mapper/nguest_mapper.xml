@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="category">
-	<!-- full scan -->
-	<select id="selectList" resultMap="com.nhnent.nguest.vo.GuestbookVO">
-		SELECT id,text,[update] FROM guestbook
-	</select>
-
+<mapper namespace="nguest">
 	<insert id="insert" parameterType="com.nhnent.nguest.vo.GuestbookVO">
-		INSERT guestbook VALUES(#{id},#{passwd},#{text},sysdatetime,sysdatetime);
+		INSERT guestbook VALUES(#{id},#{passwd},#{text},SYSDATETIME,SYSDATETIME);
 	</insert>
+	
+	<update id="update" parameterType="com.nhnent.nguest.vo.GuestbookVO">
+		UPDATE guestbook 
+		SET text = #{text}, regdate = SYSDATETIME 
+		WHERE id = #{id} AND passwd = #{passwd}
+	</update>
+	
+	<delete id="delete" parameterType="com.nhnent.nguest.vo.GuestbookVO">
+		DELETE FROM guestbook
+		WHERE id = #{id} AND passwd = #{passwd}
+	</delete>
 </mapper>

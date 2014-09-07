@@ -11,7 +11,7 @@
  
 	<util:properties id="mybatis" location="classpath:config/mybatis.config.properties"/>
 	
-  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" abstract="true" destroy-method="close">
+  	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="#{mybatis['jdbc.driverClassName']}" />
 		<property name="url" value="#{mybatis['test.url']}" />
   		<property name="username" value="#{mybatis['test.username']}" />

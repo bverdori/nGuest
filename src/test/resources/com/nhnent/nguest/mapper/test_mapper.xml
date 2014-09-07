@@ -3,6 +3,6 @@
 
 <mapper namespace="test">
 	<select id="delete">
-		TRUNCATE TABLE guestbook;
+		DELETE FROM guestbook;
 	</select>
 </mapper>
