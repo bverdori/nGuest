@@ -1,6 +1,6 @@
 package com.nhnent.nguest.dao;
 
-import javax.annotation.Resource;
+import java.util.List;
 
 import junit.framework.Assert;
 
@@ -23,7 +23,7 @@ public class GuestbookDaoTest {
 	@Autowired
 	GuestbookDao guestbookDao;
 	
-	@Resource(name = "sqlSession")
+	@Autowired
 	private SqlSessionTemplate sql;
 
 	@Before
@@ -44,5 +44,20 @@ public class GuestbookDaoTest {
 		guestbookVo.setText("test!!");
 		Assert.assertEquals(1, guestbookDao.update(guestbookVo));
 		Assert.assertEquals(1, guestbookDao.delete(guestbookVo));
+	}
+	
+	@Test
+	public void 방명록_리스트() {
+		GuestbookVO guestbookVo = new GuestbookVO();
+		
+		guestbookVo.setEmail("test");
+		guestbookVo.setPasswd("test");
+		guestbookVo.setText("Testing");
+		
+		Assert.assertEquals(1, guestbookDao.insert(guestbookVo));
+		
+		List<GuestbookVO> list = guestbookDao.selectList();
+		
+		Assert.assertEquals("Testing", list.get(0).getText());
 	}
 }

@@ -11,8 +11,8 @@
 	</resultMap>
 
 	<select id="selectList" resultMap="guestbookMap">
-		SELECT id, text, reg_date, up_date
-		FROM guestbook 
+		SELECT email, text, reg_date, up_date
+		FROM guestbook
 		ORDER BY up_date DESC
 	</select>
 

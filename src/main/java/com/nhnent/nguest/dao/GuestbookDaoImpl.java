@@ -3,12 +3,14 @@ package com.nhnent.nguest.dao;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.nhnent.nguest.vo.GuestbookVO;
 
 @Repository
 public class GuestbookDaoImpl implements GuestbookDao {
+	@Autowired
 	private SqlSessionTemplate sql;
 
 	@Override

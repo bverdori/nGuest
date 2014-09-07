@@ -1,5 +1,7 @@
 package com.nhnent.nguest.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,11 +21,11 @@ public class GuestbookService {
 		guestbookDao.update(guestbookVo);
 	}
 
-	public void removeGuestbook(GuestbookVO guestbookVo) {
+	public void deleteGuestbook(GuestbookVO guestbookVo) {
 		guestbookDao.delete(guestbookVo);
 	}
 
-	public void readGuestbooks(GuestbookVO guestbookVo) {
-		guestbookDao.selectList();
+	public List<GuestbookVO> readGuestbooks() {
+		return guestbookDao.selectList();
 	}
 }
