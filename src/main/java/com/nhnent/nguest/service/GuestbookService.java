@@ -10,22 +10,33 @@ import com.nhnent.nguest.vo.GuestbookVO;
 
 @Service
 public class GuestbookService {
+	public static final int SUCCESS = 1;
+	
 	@Autowired
 	GuestbookDao guestbookDao;
 	
-	public void createGuestbook(GuestbookVO guestbookVo) {
-		guestbookDao.insert(guestbookVo);
-	}
-
-	public void updateGuestbook(GuestbookVO guestbookVo) {
-		guestbookDao.update(guestbookVo);
-	}
-
-	public void deleteGuestbook(GuestbookVO guestbookVo) {
-		guestbookDao.delete(guestbookVo);
-	}
-
 	public List<GuestbookVO> readGuestbooks() {
 		return guestbookDao.selectList();
+	}
+	
+	public boolean createGuestbook(GuestbookVO guestbookVo) {
+		return resultService(guestbookDao.insert(guestbookVo));
+		
+	}
+
+	public boolean updateGuestbook(GuestbookVO guestbookVo) {
+		return resultService(guestbookDao.update(guestbookVo));
+	}
+
+	public boolean deleteGuestbook(GuestbookVO guestbookVo) {
+		return resultService(guestbookDao.delete(guestbookVo));
+	}
+
+	public boolean resultService(int result) {
+		if (result == SUCCESS) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 }

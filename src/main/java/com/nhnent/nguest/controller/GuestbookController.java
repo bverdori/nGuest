@@ -10,7 +10,7 @@ import com.nhnent.nguest.service.GuestbookService;
 import com.nhnent.nguest.vo.GuestbookVO;
 
 @Controller
-public class HomeController {
+public class GuestbookController {
 	@Autowired
 	GuestbookService guestbookService;
 
@@ -21,21 +21,31 @@ public class HomeController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String add(GuestbookVO guestbookVo) {
-		guestbookService.createGuestbook(guestbookVo);
-		return "redirect:/";
-	}
-	
-	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public String modify(GuestbookVO guestbookVo) {
-		guestbookService.updateGuestbook(guestbookVo);
-		return "redirect:/";
+		return redirectUrl(guestbookService.createGuestbook(guestbookVo));
 	}
 
-	@RequestMapping(value = "/remove", method = RequestMethod.GET)
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modify(GuestbookVO guestbookVo) {
+		return redirectUrl(guestbookService.updateGuestbook(guestbookVo));
+	}
+
+	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(GuestbookVO guestbookVo) {
-		guestbookService.deleteGuestbook(guestbookVo);
-		return "redirect:/";
+		return redirectUrl(guestbookService.deleteGuestbook(guestbookVo));
+	}
+
+	public String redirectUrl(boolean result) {
+		if (result == true) {
+			return "redirect:/";
+		} else {
+			return "redirect:/error";
+		}
+	}
+
+	@RequestMapping(value = "/error", method = RequestMethod.GET)
+	public String error() {
+		return "error";
 	}
 }

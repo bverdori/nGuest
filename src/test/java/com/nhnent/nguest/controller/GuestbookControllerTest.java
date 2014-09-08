@@ -1,6 +1,4 @@
-package com.nhnent.nguest.dao;
-
-import java.util.List;
+package com.nhnent.nguest.controller;
 
 import junit.framework.Assert;
 
@@ -19,9 +17,9 @@ import com.nhnent.nguest.vo.GuestbookVO;
 @WebAppConfiguration
 @ContextConfiguration(locations = {"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
 	"file:src/test/resources/mybatisTest.xml"})
-public class GuestbookDaoTest {
+public class GuestbookControllerTest {
 	@Autowired
-	GuestbookDao guestbookDao;
+	GuestbookController guestbookController;
 
 	@Autowired
 	private SqlSessionTemplate sql;
@@ -32,39 +30,21 @@ public class GuestbookDaoTest {
 	}
 
 	@Test
-	public void 방명록_입력_테스트() {
+	public void 컨트롤러_테스트() {
 		GuestbookVO guestbookVo = new GuestbookVO();
 
 		guestbookVo.setEmail("test");
 		guestbookVo.setPasswd("test");
 		guestbookVo.setText("Testing");
-
-		Assert.assertEquals(1, guestbookDao.insert(guestbookVo));
-
-		guestbookVo.setText("test!!");
-		Assert.assertEquals(1, guestbookDao.update(guestbookVo));
-		Assert.assertEquals(1, guestbookDao.delete(guestbookVo));
-	}
-
-	@Test(expected = Exception.class)
-	public void 방명록_에러_테스트() {
-		GuestbookVO guestbookVo = new GuestbookVO();
-
-		Assert.assertEquals(1, guestbookDao.insert(guestbookVo));
-	}
-
-	@Test
-	public void 방명록_리스트() {
-		GuestbookVO guestbookVo = new GuestbookVO();
-
-		guestbookVo.setEmail("test");
-		guestbookVo.setPasswd("test");
-		guestbookVo.setText("Testing");
-
-		Assert.assertEquals(1, guestbookDao.insert(guestbookVo));
-
-		List<GuestbookVO> list = guestbookDao.selectList();
-
-		Assert.assertEquals("Testing", list.get(0).getText());
+		
+		Assert.assertSame("redirect:/", guestbookController.add(guestbookVo));
+		
+		guestbookVo.setText("Change!");
+		Assert.assertSame("redirect:/", guestbookController.modify(guestbookVo));
+		Assert.assertSame("redirect:/", guestbookController.remove(guestbookVo));
+		
+		Assert.assertSame("error", guestbookController.error());
+		
+		Assert.assertNotNull(guestbookController.home());
 	}
 }
