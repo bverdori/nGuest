@@ -4,9 +4,9 @@ $(document).ready(function() {
 	$("#addGuestbookForm").bind("submit", function () {
 		var email_regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/i;
 		
-		if ($(".addId").val().trim() == "") {
+		if ($(".addEmail").val().trim() == "") {
 			alert("이메일주소를 입력해 주세요.");
-			$(".addId").focus();
+			$(".addEmail").focus();
 			return false;
 		} else if ($(".addPasswd").val().trim() == "") {
 			alert("비밀번호를 입력해 주세요.");
@@ -18,9 +18,9 @@ $(document).ready(function() {
 			return false;
 		} 
 		// E-mail 형식 체크 (형식 불일치의 경우 경고창 생성)
-		else if(!email_regex.test($(".addId").val().trim())){
+		else if(!email_regex.test($(".addEmail").val().trim())){
 			alert("이메일 형식을 맞춰 주세요.");
-			$(".addId").focus();
+			$(".addEmail").focus();
 			return false;
 		}
 		return true;

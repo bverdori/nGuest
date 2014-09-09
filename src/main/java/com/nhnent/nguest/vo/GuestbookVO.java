@@ -55,6 +55,4 @@ public class GuestbookVO {
 	public void setUpdate(String update) {
 		this.update = update;
 	}
-	
-	
 }
