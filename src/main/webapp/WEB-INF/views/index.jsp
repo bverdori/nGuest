@@ -29,10 +29,11 @@
 		</tr>
 	</thead>
 	<tbody>
+		<c:forEach var="guestbook" items="${guestbooks}" varStatus="status">
 		<tr>
-			<td>김준태</td>
-			<td>하하</td>
-			<td>오늘</td>
+			<td>${guestbook.id}</td>
+			<td>${guestbook.text}</td>
+			<td>${guestbook.update}</td>
 			<td>
 				<button type="button" class="btn btn-default">수정</button>
 				<button type="button" class="btn btn-default">삭제</button>
@@ -41,8 +42,8 @@
 		<tr>
 			<td>
 				<form action="modify" method="post" id="modifyGuestbookForm">
-					<input type="hidden" name="id" value="">
-					<label>Content</label><input type="text" class="modifyText" placeholder="방명록에 글 남기기">
+					<input type="hidden" name="id" value="${guestbook.id}">
+					<label>Content</label><input type="text" class="modifyText" value="${guestbook.text}">
 					<label>Password</label><input type="password" name="passwd" class="modifyPasswd" placeholder="패스워드"><br>
 					<button type="submit">수정</button>
 				</form>
@@ -51,12 +52,13 @@
 		<tr>
 			<td>
 				<form action="remove" method="post" id="removeGuestbookForm">
-					<input type="hidden" name="id" value="">
+					<input type="hidden" name="id" value="${guestbook.id}">
 					<label>Password</label><input type="password" name="passwd"  class="removePasswd" placeholder="패스워드"><br>
 					<button type="submit">삭제</button>
 				</form>
 			</td>
 		</tr>
+		</c:forEach>
 	</tbody>
 </table>
 </div>
