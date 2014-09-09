@@ -1,3 +1,10 @@
+/*
+ * RequiredAuthorityAspect.java 2014. 9. 9
+ *
+ * Copyright 2014 Bverdori. All rights Reserved. 
+ * Use is subject to license terms.
+ */
+
 package com.nhnent.nguest.aspect;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,27 +19,32 @@ import org.springframework.stereotype.Component;
 import com.nhnent.nguest.dao.GuestbookDao;
 import com.nhnent.nguest.vo.GuestbookVO;
 
+/**
+ * RequiredAuthorityAspect
+ * 
+ * @author Bverdori
+ */
 @Aspect
 @Component
 public class RequiredAuthorityAspect {
 	@Autowired(required = true)
 	private HttpServletRequest request;
-	
+
 	@Autowired
 	private GuestbookDao guestbookDao;
-	
+
 	@Pointcut("@annotation(com.nhnent.nguest.aspect.RequiredAuthority)")
 	private void authorityRequired() {
 	}
-	
+
 	@Around(value = "authorityRequired()")
 	public Object throwExceptionIfCurrentUserIsNotAdmin(ProceedingJoinPoint joinPoint, GuestbookVO guestbookVo) throws Throwable {
 		int result = guestbookDao.selectOne(guestbookVo);
-		
+
 		if (result == 0) {
 			throw new Exception();
 		}
-		
+
 		return joinPoint.proceed();
 	}
 }

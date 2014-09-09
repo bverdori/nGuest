@@ -1,9 +1,20 @@
+/*
+ * GuestbookVO.java 2014. 9. 9
+ *
+ * Copyright 2014 Bverdori. All rights Reserved. 
+ * Use is subject to license terms.
+ */
 package com.nhnent.nguest.vo;
 
 import javax.validation.constraints.Size;
 
 import com.nhnent.nguest.validator.GuestbookGroup;
 
+/**
+ * GuestbookVO
+ * 
+ * @author Bverdori
+ */
 public class GuestbookVO {
 	@Size(min = 1, max = 30, groups = {GuestbookGroup.class})
 	private String email;

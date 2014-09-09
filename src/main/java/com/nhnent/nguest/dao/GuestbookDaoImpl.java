@@ -1,3 +1,10 @@
+/*
+ * GuestbookDaoImpl.java 2014. 9. 9
+ *
+ * Copyright 2014 Bverdori. All rights Reserved. 
+ * Use is subject to license terms.
+ */
+
 package com.nhnent.nguest.dao;
 
 import java.util.List;
@@ -8,6 +15,11 @@ import org.springframework.stereotype.Repository;
 
 import com.nhnent.nguest.vo.GuestbookVO;
 
+/**
+ * GuestbookDaoImpl
+ * 
+ * @author Bverdori
+ */
 @Repository
 public class GuestbookDaoImpl implements GuestbookDao {
 	@Autowired
@@ -32,7 +44,7 @@ public class GuestbookDaoImpl implements GuestbookDao {
 	public List<GuestbookVO> selectList() {
 		return sql.selectList("nguest.selectList");
 	}
-	
+
 	@Override
 	public int selectOne(GuestbookVO guestbookVo) {
 		return sql.selectOne("nguest.selectOne", guestbookVo);

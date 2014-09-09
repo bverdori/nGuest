@@ -1,3 +1,10 @@
+/*
+ * GuestbookController.java 2014. 9. 9
+ *
+ * Copyright 2014 Bverdori. All rights Reserved. 
+ * Use is subject to license terms.
+ */
+
 package com.nhnent.nguest.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +19,11 @@ import com.nhnent.nguest.service.GuestbookService;
 import com.nhnent.nguest.validator.GuestbookGroup;
 import com.nhnent.nguest.vo.GuestbookVO;
 
+/**
+ * GuestbookController
+ * 
+ * @author Bverdori
+ */
 @Controller
 public class GuestbookController {
 	@Autowired
