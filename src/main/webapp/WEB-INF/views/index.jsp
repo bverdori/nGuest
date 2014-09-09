@@ -7,10 +7,13 @@
 <h1>
 	방명록 페이지
 </h1>
-<form action="add" method="post">
-	<label>ID</label><input type="text" name="id" placeholder="아이디"><br>
-	<label>Password</label><input type="password" name="passwd" placeholder="패스워드"><br>
-	<label>Content</label><input type="text" placeholder="방명록에 글 남기기">
+<form action="add" method="post" id="addGuestbookForm">
+	<label>ID</label>
+	<input type="text" name="id" class="addId" placeholder="아이디"><br>
+	<label>Password</label>
+	<input type="password" name="passwd" class="addPasswd" placeholder="패스워드"><br>
+	<label>Content</label>
+	<input type="text" name="text" class="addText" placeholder="방명록에 글 남기기">
 	<button type="submit">작성</button>
 </form>
 
@@ -37,19 +40,19 @@
 		</tr>
 		<tr>
 			<td>
-				<form action="modify" method="post">
+				<form action="modify" method="post" id="modifyGuestbookForm">
 					<input type="hidden" name="id" value="">
-					<label>Content</label><input type="text" placeholder="방명록에 글 남기기">
-					<label>Password</label><input type="password" name="passwd" placeholder="패스워드"><br>
+					<label>Content</label><input type="text" class="modifyText" placeholder="방명록에 글 남기기">
+					<label>Password</label><input type="password" name="passwd" class="modifyPasswd" placeholder="패스워드"><br>
 					<button type="submit">수정</button>
 				</form>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<form action="remove" method="post">
+				<form action="remove" method="post" id="removeGuestbookForm">
 					<input type="hidden" name="id" value="">
-					<label>Password</label><input type="password" name="passwd" placeholder="패스워드"><br>
+					<label>Password</label><input type="password" name="passwd"  class="removePasswd" placeholder="패스워드"><br>
 					<button type="submit">삭제</button>
 				</form>
 			</td>
