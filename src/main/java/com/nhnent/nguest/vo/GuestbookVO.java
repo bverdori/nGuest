@@ -1,8 +1,15 @@
 package com.nhnent.nguest.vo;
 
+import javax.validation.constraints.Size;
+
+import com.nhnent.nguest.validator.GuestbookGroup;
+
 public class GuestbookVO {
+	@Size(min = 1, max = 30, groups = {GuestbookGroup.class})
 	private String email;
+	@Size(min = 1, max = 30, groups = {GuestbookGroup.class})
 	private String passwd;
+	@Size(min = 1, max = 300, groups = {GuestbookGroup.class})
 	private String text;
 	private String regdate;
 	private String update;
