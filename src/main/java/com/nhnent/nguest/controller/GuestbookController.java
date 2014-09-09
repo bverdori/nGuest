@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.nhnent.nguest.aspect.RequiredAuthority;
 import com.nhnent.nguest.service.GuestbookService;
 import com.nhnent.nguest.validator.GuestbookGroup;
 import com.nhnent.nguest.vo.GuestbookVO;
@@ -28,11 +29,13 @@ public class GuestbookController {
 		return redirectUrl(guestbookService.createGuestbook(guestbookVo));
 	}
 
+	@RequiredAuthority
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String modify(@Validated({GuestbookGroup.class}) GuestbookVO guestbookVo) {
 		return redirectUrl(guestbookService.updateGuestbook(guestbookVo));
 	}
 
+	@RequiredAuthority
 	@RequestMapping(value = "/remove", method = RequestMethod.POST)
 	public String remove(@Validated({GuestbookGroup.class}) GuestbookVO guestbookVo) {
 		return redirectUrl(guestbookService.deleteGuestbook(guestbookVo));

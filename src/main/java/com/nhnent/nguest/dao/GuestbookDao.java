@@ -12,4 +12,6 @@ public interface GuestbookDao {
 	public int delete(GuestbookVO guestbookVo);
 	
 	public List<GuestbookVO> selectList();
+	
+	public int selectOne(GuestbookVO guestbookVo);
 }

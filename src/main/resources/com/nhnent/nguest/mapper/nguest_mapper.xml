@@ -30,4 +30,10 @@
 		DELETE FROM guestbook
 		WHERE email = #{email} AND passwd = #{passwd}
 	</delete>
+	
+	<select id="selectOne" parameterType="com.nhnent.nguest.vo.GuestbookVO">
+		SELECT count(email)
+		FROM guestbook
+		WHERE email = #{email} AND passwd = #{passwd}
+	</select>
 </mapper>

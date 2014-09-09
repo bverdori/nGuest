@@ -32,4 +32,9 @@ public class GuestbookDaoImpl implements GuestbookDao {
 	public List<GuestbookVO> selectList() {
 		return sql.selectList("nguest.selectList");
 	}
+	
+	@Override
+	public int selectOne(GuestbookVO guestbookVo) {
+		return sql.selectOne("nguest.selectOne", guestbookVo);
+	}
 }
