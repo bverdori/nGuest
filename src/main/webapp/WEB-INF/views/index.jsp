@@ -19,14 +19,20 @@
 			방명록 페이지
 		</h1>
 		
-		<form action="add" method="post" id="addGuestbookForm">
-			<label>E-mail</label>
-			<input type="text" name="email" class="addEmail" placeholder="E-mail"><br>
-			<label>Password</label>
-			<input type="password" name="passwd" class="addPasswd" placeholder="패스워드"><br>
-			<label>Content</label>
-			<input type="text" name="text" class="addText" placeholder="방명록에 글 남기기">
-			<button type="submit">작성</button>
+		<form action="add" method="post" id="addGuestbookForm" class="form-horizontal" role="form">
+			<div class="form-group">
+				<label class="col-lg-2 control-label">E-mail</label>
+				<input type="text" name="email" class="addEmail" placeholder="E-mail">
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">Password</label>
+				<input type="password" name="passwd" class="addPasswd" placeholder="패스워드">
+			</div>
+			<div class="form-group">
+				<label class="col-lg-2 control-label">Content</label>
+				<input type="text" name="text" class="addText" placeholder="방명록에 글 남기기">
+				<button type="submit" class="btn btn-default btn-sm">작성</button>
+			</div>
 		</form>
 
 		<hr>
@@ -57,17 +63,21 @@
 							<input type="hidden" name="email" value="${guestbook.email}">
 							<label>수정할 내용</label><input type="text" name="text" class="modifyText" value="${guestbook.text}">
 							<label>Password</label><input type="password" name="passwd" class="modifyPasswd" placeholder="패스워드">
-							<button type="submit">수정</button>
+							<button type="submit" class="btn btn-default btn-sm">수정</button>
 						</form>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="4">
-						<form action="remove" method="post" id="removeGuestbookForm">
+						<form action="remove" method="post" id="removeGuestbookForm" class="form-inline" role="form">
+							<div class="form-group">
 							<label>삭제</label>
 							<input type="hidden" name="email" value="${guestbook.email}">
+							</div>
+							<div class="form-group">
 							<label>Password</label><input type="password" name="passwd"  class="removePasswd" placeholder="패스워드">
-							<button type="submit">삭제</button>
+							<button type="submit" class="btn btn-default btn-sm">삭제</button>
+							</div>
 						</form>
 					</td>
 				</tr>
